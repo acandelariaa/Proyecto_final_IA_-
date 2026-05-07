@@ -60,7 +60,52 @@ No encontramos biomarcadores listos para la clínica, pero sí confirmamos algo 
 | % Varianza OS | 8.26% | **27.08%** |
 | Diff. mediana OS.time | 214 días | **1,278 días** |
 | Score | 0/3 | **3/3** |
+----
+# Comparación con Literatura Científica
+
+---
+
+## Artículo de Referencia
+
+> Ji, H., Zhang, Q., Wang, X.-X., Li, J., Wang, X., Pan, W., Zhang, Z., Ma, B., & Zhang, H.-M. (2022).
+> **Identification of stromal microenvironment characteristics and key molecular mining in pancreatic cancer.**
+> *Discover Oncology*, 13, 83. https://doi.org/10.1007/s12672-022-00532-y
+
+---
+
+## ¿Por qué este artículo?
+
+Trabaja exactamente con los mismos datos (TCGA-PAAD), aplica clustering jerárquico sobre expresión genetica y busca subgrupos con diferencias en supervivencia. La diferencia clave es el enfoque: ellos parten de conocimiento biológico previo sobre la **matriz extracelular (ECM)**; nosotros partimos de los datos crudos sin suposiciones temáticas.
+
+---
+
+## ¿Qué hicieron ellos?
+
+Seleccionaron 14 vías biológicas relacionadas con la ECM, aplicaron **GSVA** para puntuar cada vía por paciente, y realizaron clustering jerárquico obteniendo **4 grupos** con diferencias significativas en supervivencia (p = 0.0021). A partir de ahí construyeron el modelo **PECMS** con 8 genes usando regresión Lasso, logrando un AUC de 0.90–0.93, validado en una cohorte independiente (CPTAC-3) y en 20 pacientes clínicos propios.
+
+---
+
+## Similitudes
+
+El hallazgo más directo: **ambos estudios convergen en 4 clusters como número óptimo** para TCGA-PAAD. En el paper, el mejor grupo no alcanzó mediana de supervivencia y el peor tuvo 418 días. En nuestro caso, el clustering jerárquico con 4 grupos produjo una diferencia de hasta **1,278 días entre medianas**, explicando el 27% de la variabilidad en OS.time — frente al 8% de K-Means con 2 grupos.
+
+Ambos estudios confirman lo mismo: **la biología del PDAC no se simplifica bien a 2 subtipos**, y la granularidad importa.
+
+- **Interpretación biológica**: identificaron a **KLHL32** como gen protector y a **SLC2A1 (GLUT1)** como marcador de peor pronóstico, con validación en tejido (inmunohistoquímica). Nosotros detectamos genes diferenciales pero no llegamos a interpretar su función.
+- **Validación externa**: confirmaron sus resultados en dos cohortes adicionales. aqui se trabajó solo con TCGA-PAAD.
+
+---
+
+## En resumen
+
+El artículo funciona como una validación indirecta de que la señal que encontramos es real. Al mismo tiempo, muestra el camino natural hacia un análisis más robusto: incorporar conocimiento biológico en la selección de genes, análisis de vías (GSEA, Enrichr), y validación en datos independientes.
+
+
 
 ---
 
 [← Análisis de Genes](06_analisis_genes.md) | [Siguiente: EXTRA — Filtrado MAD →](08_extra_mad.md)
+
+
+
+
