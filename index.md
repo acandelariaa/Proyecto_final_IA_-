@@ -48,6 +48,9 @@ Todos los datos provienen de **TCGA-PAAD** vía [UCSC Xena](https://xenabrowser.
 | `TCGA-PAAD.clinical.tsv.gz` | Variables clínicas (estadio, género, edad, etc.) |
 | `TCGA-PAAD.survival.tsv.gz` | Tiempo de seguimiento y estado vital |
 
+Notebook
+[Notebook .ipynb](Proyecto_parcial_3.ipynb)
+
 ---
 
 ## Stack tecnológico
